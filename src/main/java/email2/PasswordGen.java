@@ -22,6 +22,7 @@ public class PasswordGen extends User {
             int random = (int) (Math.random() * setpass.length());
             password[i] = setpass.charAt(random);
         }
+
         return new String(password);
     }
 

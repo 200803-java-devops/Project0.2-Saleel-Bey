@@ -17,11 +17,10 @@ public class PasswordChange {
         if (passwordChange.equals("yes")) {
             System.out.println("Enter new password: ");
             passwordChange = pass.nextLine().toLowerCase();
-            System.out.println("You have successfully updated your password.");
+            System.out.println("You have successfully updated your password.\n");
         } else if (passwordChange.equals("no")) {
-            System.out.println("You have chosen to keep your given password.");
+            System.out.println("You have chosen to keep your given password.\n");
         }
-        pass.close();
 
         return passwordChange;
 

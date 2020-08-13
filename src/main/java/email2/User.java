@@ -21,31 +21,31 @@ public class User implements Department {
     }
 
     public void userPrompt() {
-        System.out.println("Please enter your first name.");
+        System.out.println("Please enter your first name:");
         String firstName = input.nextLine();
-        System.out.println("Please enter your last name.");
+        System.out.println("Please enter your last name:");
         String lastName = input.nextLine();
-        System.out.println("You have entered: " + firstName + " " + lastName);
+        System.out.println("You have entered: " + firstName + " " + lastName+"\n");
 
     }
 
     public void depOperation() {
-        System.out.println("Choose your Department: \n1: Sales\n2: Help Desk\n3: Operations");
+        System.out.println("Choose your Department: \n1: Sales\n2: Help Desk\n3: Operations\n");
 
     }
 
     public String depChoice(int choice) {
         choice = input.nextInt();
         if (choice == 1) {
-            System.out.println("Sales");
+            System.out.println("Department: Sales");
         } else if (choice == 2) {
-            System.out.println("Help Desk");
+            System.out.println("Department: Help Desk");
         } else if (choice == 3) {
-            System.out.println("Operations");
+            System.out.println("Department: Operations");
         } else {
 
         }
-        return " ";
+        return "Department: ";
 
     }
 
