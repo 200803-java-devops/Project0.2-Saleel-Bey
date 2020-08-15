@@ -2,10 +2,6 @@ package email2;
 
 import java.util.*;
 
-/**
- * Hello world!
- *
- */
 public class EmailMain {
 
     public static void main(String[] args) {
@@ -22,10 +18,11 @@ public class EmailMain {
         }
 
         User startHere = new User();
-        startHere.userPrompt();
+        User.userPromptOne(null); // Was originally starthere.userprompt(); - but changed due to static method in
+        User.userPrompTwo(null); // User class
 
         startHere.depOperation();
-        startHere.depChoice(0);
+        User.depChoice(null); // originally took an argument of 0 when the parameter was set to an int.
 
         PasswordGen generate = new PasswordGen();
         generate.ranPassword(8);

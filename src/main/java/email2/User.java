@@ -3,15 +3,10 @@ package email2;
 import java.util.Scanner;
 
 public class User implements Department {
-    private String firstName;
-    private String lastName;
     private String deptEmail;
-    Scanner input = new Scanner(System.in);
+    public static Scanner input = new Scanner(System.in);
 
-    public User(String deptEmail) { // this paramerterized constructor is used for the ArrayList of objects in my
-                                    // main class
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String deptEmail) {
         this.deptEmail = deptEmail;
     }
 
@@ -20,32 +15,37 @@ public class User implements Department {
 
     }
 
-    public void userPrompt() {
-        System.out.println("Please enter your first name:");
-        String firstName = input.nextLine();
-        System.out.println("Please enter your last name:");
-        String lastName = input.nextLine();
-        System.out.println("You have entered: " + firstName + " " + lastName+"\n");
+    public static final String userPromptOne(String firstName) { // changed to static void so that it can be accessable
+                                                                 // to the database
+        System.out.println("\nPlease enter your first name:");
+        firstName = input.nextLine();
+        return ("You have entered: " + firstName + "\n");
 
+    }
+
+    public static final String userPrompTwo(String lastName) { // Both user prompts were originally a combined method
+        System.out.println("Please enter your last name:");
+        lastName = input.nextLine();
+        return ("You have entered: " + lastName + "\n");
     }
 
     public void depOperation() {
-        System.out.println("Choose your Department: \n1: Sales\n2: Help Desk\n3: Operations\n");
+        System.out.println("Please enter your Department: \nSales\nHelp Desk\nOperations\n");
 
     }
 
-    public String depChoice(int choice) {
-        choice = input.nextInt();
-        if (choice == 1) {
-            System.out.println("Department: Sales");
-        } else if (choice == 2) {
-            System.out.println("Department: Help Desk");
-        } else if (choice == 3) {
-            System.out.println("Department: Operations");
+    public static String depChoice(String choice) {
+        choice = input.next();
+        if (choice == "sales".toUpperCase()) {
+            System.out.println("Department: Sales\n");
+        } else if (choice == "help desk".toUpperCase()) {
+            System.out.println("Department: Help Desk\n");
+        } else if (choice == "operations".toUpperCase()) {
+            System.out.println("Department: Operations\n");
         } else {
 
         }
-        return "Department: ";
+        return "Department: \n";
 
     }
 
