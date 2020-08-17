@@ -9,8 +9,8 @@ import java.sql.PreparedStatement;
 public class DBConnect extends User {
     
     private static final String username = "postgres";
-    private static final String password = "postgres";
-    private static final String url = "jdbc:postgresql://localhost:5432/email2-maven";
+    private static final String password = "postgres"; //docker = postgres
+    private static final String url = "jdbc:postgresql://localhost:5432/email2-maven"; //Docker = email2-maven-port 5432
     private static final String driver = "org.postgresql.Driver";
     private static Connection connection;
 
