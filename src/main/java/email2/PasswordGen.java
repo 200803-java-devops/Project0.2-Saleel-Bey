@@ -1,13 +1,13 @@
 package email2;
 
-import java.util.Scanner;
+
 
 public class PasswordGen extends User {
 
     private String password;
     private int passwordLength = 8;
     int i;
-    Scanner in = new Scanner(System.in);
+    //Originally had scanner and made scanner in user class static for public static void userprompt method (DB connection purposes)
 
     public PasswordGen() {
         this.password = ranPassword(passwordLength);

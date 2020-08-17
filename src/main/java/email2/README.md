@@ -13,7 +13,7 @@ This application will allow users to create an email account that will be stored
     [x] File I/O
     [x] Collections API
 [x] Maven 3
-[] JUnit 5
+[x] JUnit 5
 [x] Git
-[] PostgreSQL 9+
+[x] PostgreSQL 9+
 

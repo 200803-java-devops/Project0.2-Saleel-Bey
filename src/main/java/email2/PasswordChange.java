@@ -10,16 +10,17 @@ public class PasswordChange {
 
     }
 
+    
     public String changePassword() {
         String passwordChange = pass.nextLine().toLowerCase();
         System.out.println("Change password:\nYes:\nNo: ");
         passwordChange = pass.nextLine().toLowerCase();
         if (passwordChange.equals("yes")) {
-            System.out.println("Enter new password: ");
+            System.out.println("Enter new password: \n");
             passwordChange = pass.nextLine().toLowerCase();
-            System.out.println("You have successfully updated your password.\n");
+            System.out.println("\nYou have successfully updated your password.\n");
         } else if (passwordChange.equals("no")) {
-            System.out.println("You have chosen to keep your given password.\n");
+            System.out.println("\nYou have chosen to keep your given password.\n");
         }
 
         return passwordChange;
