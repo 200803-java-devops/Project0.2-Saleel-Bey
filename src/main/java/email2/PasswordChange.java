@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class PasswordChange {
 
+    // Allows the user to change their password
+
     Scanner pass = new Scanner(System.in);
 
     public void PasswordChange() {
 
     }
 
-    
     public String changePassword() {
         String passwordChange = pass.nextLine().toLowerCase();
         System.out.println("Change password:\nYes:\nNo: ");

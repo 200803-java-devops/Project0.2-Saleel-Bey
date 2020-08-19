@@ -1,10 +1,23 @@
 package email2;
 
+import java.sql.SQLException;
 import java.util.*;
 
-public class EmailMain {
+public class EmailMain extends DBConnect {
 
     public static void main(String[] args) {
+
+        // Concurrency object implementation
+        java.lang.Runnable instance = new DatabaseUpdate();
+        Thread thr = new Thread(instance);
+        thr.start();
+        try {
+            Thread.sleep(3);
+            thr.interrupt();
+        } catch (Exception e) {
+            System.err.println("Thread has been interrupted.");
+        }
+        // Collection API
         ArrayList<String> users = new ArrayList<String>();
         users.add("yourname.sales@revature.com");
         users.add("yourname.helpdesk@revature.com");
@@ -16,13 +29,13 @@ public class EmailMain {
             System.out.println(users.get(i));
 
         }
-
+        // Inheritance Objects
         User startHere = new User();
-        User.userPromptOne(null); // Was originally starthere.userprompt(); - but changed due to static method in
-        User.userPrompTwo(null); // User class
+        startHere.userPromptOne(null);
+        startHere.userPromptTwo(null);
 
         startHere.depOperation();
-        User.depChoice(null); // originally took an argument of 0 when the parameter was set to an int.
+        User.depChoice(null);
 
         PasswordGen generate = new PasswordGen();
         generate.ranPassword(8);
@@ -30,7 +43,16 @@ public class EmailMain {
         PasswordChange changepass = new PasswordChange();
         changepass.changePassword();
 
-        System.out.println("Your email account has been created.");
+        System.out
+                .println("Your email account has been created and is currently pending to the Global Address List. \n");
+        // Database Connection Object
+        DBConnect db = new DBConnect();
+        try {
+            db.getConnection();
+        } catch (SQLException e) {
+            System.err.println("Failed to connect.");
+            e.printStackTrace();
+        }
 
     }
 }

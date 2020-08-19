@@ -3,37 +3,56 @@ package email2;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
+ 
+public class DBConnect extends User { 
 
-public class DBConnect extends User {
-    
-    private static final String username = "postgres";
-    private static final String password = "postgres"; //docker = postgres
-    private static final String url = "jdbc:postgresql://localhost:5432/email2-maven"; //Docker = email2-maven-port 5432
-    private static final String driver = "org.postgresql.Driver";
-    private static Connection connection;
+    //Used for the purpose of connecting to the database
 
-    public static synchronized Connection getConection(String firstName, String lastName, String choice) throws SQLException {
-        if (connection == null) {
-            try {
-                Class.forName(driver);
-                String query = " insert into email2-maven (firstName, lastName, department)"+"values (?, ?, ?)";
+    String username = "postgres";
+    String password = "Barata20"; 
+    String url = "jdbc:postgresql://localhost:5432/Email2-Maven"; 
+    String driver = "org.postgresql.Driver";
+    Connection connection;
 
-                //Prepared Statement creation
-                PreparedStatement preparedstmt = connection.prepareStatement(query);
-                preparedstmt.setString(1, userPromptOne(firstName)); // must figure out how to reflect user input here
-                preparedstmt.setString(2, userPrompTwo(lastName)); 
-                preparedstmt.setString(3, depChoice(choice));
-                preparedstmt.execute();
+    public synchronized Connection getConnection() throws SQLException {
 
-                connection.close();
-            } catch (ClassNotFoundException e) {
-                System.err.println("Connection Failed.");
-            }
-        connection = DriverManager.getConnection(url, username, password);
+        String query = " SELECT first_name, last_name, department, phone_num FROM email_storage";
+
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            System.err.println("Connection Failed");
         }
+
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Successfully connected to the Database:\n");
+
+            // Statement creation and implementation of printing the database.
+            Statement stmt = connection.createStatement(); 
+            ResultSet rset = stmt.executeQuery(query);
+            int rows = 0;
+            while (rset.next()) {
+                String firstname = rset.getString("first_name");
+                String lastname = rset.getString("last_name");
+                String department = rset.getString("department");
+                int phone = rset.getInt("phone_num");
+                System.out.println(firstname + ", " + lastname + ", " + department + ", " + phone);
+                ++rows;
+            }
+            System.out.println("Global Address List. " + rows);
+
+        } catch (SQLException e) {
+            System.err.println("Failed to connect.");
+            e.printStackTrace();
+        }
+
+        connection.close();
 
         return connection;
     }
+
 }

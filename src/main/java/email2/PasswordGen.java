@@ -7,7 +7,7 @@ public class PasswordGen extends User {
     private String password;
     private int passwordLength = 8;
     int i;
-    //Originally had scanner and made scanner in user class static for public static void userprompt method (DB connection purposes)
+    //Used to generate a random password that the user can choose to keep
 
     public PasswordGen() {
         this.password = ranPassword(passwordLength);

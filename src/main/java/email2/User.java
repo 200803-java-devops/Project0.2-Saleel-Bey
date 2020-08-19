@@ -3,7 +3,11 @@ package email2;
 import java.util.Scanner;
 
 public class User implements Department {
+
+    //Prompts the user for input
+
     private String deptEmail;
+
     public static Scanner input = new Scanner(System.in);
 
     public User(String deptEmail) {
@@ -15,15 +19,14 @@ public class User implements Department {
 
     }
 
-    public static final String userPromptOne(String firstName) { // changed to static void so that it can be accessable
-                                                                 // to the database
+    public static String userPromptOne(String firstName) {
         System.out.println("\nPlease enter your first name:");
         firstName = input.nextLine();
         return ("You have entered: " + firstName + "\n");
 
     }
 
-    public static final String userPrompTwo(String lastName) { // Both user prompts were originally a combined method
+    public static String userPromptTwo(String lastName) {
         System.out.println("Please enter your last name:");
         lastName = input.nextLine();
         return ("You have entered: " + lastName + "\n");
